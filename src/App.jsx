@@ -123,6 +123,14 @@ function App() {
       link: "https://mmbnb.vercel.app",
       github: "https://github.com/muhammedmuneerk/mmbnb",
       tags: ["MongoDB", "Express", "React", "Node.js", "Tailwind CSS", "Cloudinary"]
+    },
+    {
+      title: "Noir Cuisine",
+      description: "A Static restaurent portfolio website design, In Black theme.",
+      image: "images/noir-cuisine.png",
+      link: "https://noircuisine.vercel.app/",
+      github: "https://github.com/muhammedmuneerk/noir-cuisine",
+      tags: ["HTML", "CSS", "javascript"]
     }
   ];
 
