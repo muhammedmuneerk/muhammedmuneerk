@@ -86,9 +86,40 @@ function App() {
   ];
 
   const skills = [
-    "JAVA", "HTML", "CSS", "JavaScript", "Node.js", "React",
-    "Express", "MongoDB", "Tailwind CSS", "GitHub", "AWS",
-    "Firebase", "Vercel", "VS Code", "Eclipse", "Render"
+    {
+      name: "Frontend",
+      items: [
+        { name: "HTML5", icon: "html5" },
+        { name: "CSS3", icon: "css3" },
+        { name: "JavaScript", icon: "javascript" },
+        { name: "React", icon: "react" },
+        { name: "Tailwind CSS", icon: "tailwindcss" }
+      ]
+    },
+    {
+      name: "Backend",
+      items: [
+        { name: "Node.js", icon: "nodejs" },
+        { name: "Express", icon: "express" },
+        { name: "MongoDB", icon: "mongodb" },
+        { name: "Java", icon: "java" }
+      ]
+    },
+    {
+      name: "Tools & Others",
+      items: [
+        { name: "GitHub", icon: "github" },
+        { name: "AWS", icon: "amazonwebservices" },
+        { name: "Firebase", icon: "firebase" },
+        { name: "Vercel", icon: "vercel" },
+        { name: "VS Code", icon: "vscode" },
+        { name: "Eclipse", icon: "eclipse" },
+        { name: "Render", icon: "render" },
+        { name: "Cursor", icon: "cursor" },
+        { name: "ChatGPT", icon: "openai" },
+        { name: "Bolt.new", icon: "bolt" }
+      ]
+    }
   ];
 
   const projects = [
@@ -598,22 +629,67 @@ function App() {
             className="text-4xl font-bold mb-12 text-center flex items-center justify-center text-gray-900 dark:text-white"
           >
             <Cpu className="w-8 h-8 mr-3 text-indigo-600 dark:text-indigo-400" />
-            Skills
+            Skills & Expertise
           </motion.h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {skills.map((skill, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {skills.map((category, index) => (
               <motion.div
-                key={skill}
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="group p-6 bg-gray-50 dark:bg-gray-700 rounded-xl text-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300"
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="w-full"
               >
-                <h3 className="font-semibold text-lg text-gray-800 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                  {skill}
-                </h3>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">{category.name}</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                  {category.items.map((skill, skillIndex) => (
+                    <motion.div
+                      key={skillIndex}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: skillIndex * 0.1 }}
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center gap-2"
+                    >
+                      {skill.icon === 'render' ? (
+                        <img
+                          src="/images/android-chrome-512x512.png"
+                          alt="Render"
+                          className="w-8 h-8"
+                        />
+                      ) : skill.icon === 'amazonwebservices' ? (
+                        <img
+                          src="/images/aws-icon.png"
+                          alt="AWS"
+                          className="w-8 h-8"
+                        />
+                      ) : skill.icon === 'cursor' ? (
+                        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M12 2L12 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      ) : skill.icon === 'openai' ? (
+                        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                          <path d="M12 6c-3.314 0-6 2.686-6 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6zm0 10c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z"/>
+                        </svg>
+                      ) : skill.icon === 'bolt' ? (
+                        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M13 3L4 14h7l-2 7 9-11h-7l2-7z"/>
+                        </svg>
+                      ) : (
+                        <img
+                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-original.svg`}
+                          alt={skill.name}
+                          className="w-8 h-8"
+                        />
+                      )}
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{skill.name}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>
